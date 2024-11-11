@@ -4,18 +4,19 @@
   padding: 40px 80px;
   background: linear-gradient(118.42deg, rgba(76, 45, 78, 0,98) 5.36%, rgba(175, 104, 180, 0) 71.25%);
   border-radius: 10px;
+  background-color: #4c2d4e28;
   margin: 20px;
 }
 
 .hero-content h1 {
   font-size: 64px;
-  color: rgb(118, 51, 121);
+  color: #4c2d4e;
   margin-bottom: 20px;
 }
 
 .hero-content h2 {
   font-size: 32px;
-  color: white;
+  color: #4c2d4e;
   margin-bottom: 40px;
 }
 

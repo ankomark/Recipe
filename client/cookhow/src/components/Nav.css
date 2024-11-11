@@ -1,5 +1,7 @@
 /* Navbar styles */
 .navbar {
+  position: sticky; /* Makes the navbar stick to the top */
+  top: 0; /* Aligns it to the top of the viewport */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7,21 +9,22 @@
   background-color: #2d242f; /* Dark background */
   border-radius: 10px; /* Rounded corners */
   margin: 0 10px;
+  z-index: 1000; /* Ensure it stays above other content */
 }
 
 .navbar-logo {
   display: flex;
-  width: auto;
+  width: 150px;
   height: auto;
   align-items: center;
   gap: 10px;
 }
 
-/* .logo-text {
+.logo-text {
   font-family: 'Oregano', sans-serif;
   font-size: 40px;
   color: #604461;
-} */
+}
 
 .navbar-links {
   display: flex;
@@ -32,8 +35,8 @@
 .navbar-links a {
   text-decoration: none;
   color: #fff; /* White text */
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight:400;
 }
 
 .navbar-buttons {

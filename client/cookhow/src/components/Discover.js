@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import './Discover.css'
 import heroIcon from "../assets/arrow.png";
 import top1 from "../assets/top1.png"
+import searchIcon from "../assets/search1.png"
 
 const Discover = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = () => {
+    console.log("Search query: ", searchQuery);
+    // You can perform additional logic here, like filtering recipes
+  };
   return (
     <div>
       <section className="hero-section">
@@ -22,6 +29,25 @@ const Discover = () => {
           />
         </div>
       </section>
+
+      {/* Search Bar Section */}
+      <div className="search-bar">
+        <img
+          src={searchIcon}
+          alt="Search Icon"
+          className="search-icon"
+        />
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)} // Update state on input change
+        />
+        <button className="search-button" onClick={handleSearch}> {/* Search Button */}
+          Search
+        </button>
+      </div>
 
       <footer className="footer">
         <div className="footer-section">
