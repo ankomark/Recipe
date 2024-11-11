@@ -1,0 +1,169 @@
+Swagger API Documentation
+1. User Authentication
+1.1 Sign In
+POST /api/auth/signin
+Description: Authenticates a user based on email and password.
+Request Body:
+json
+
+{
+  "email": "string",
+  "password": "string"
+}
+Responses:
+200 OK: Returns a JWT token and user profile data.
+401 Unauthorized: Invalid credentials.
+400 Bad Request: Validation errors.
+1.2 Sign Up
+POST /api/auth/signup
+Description: Registers a new user account.
+Request Body:
+json
+
+{
+  "name": "string",
+  "email": "string",
+  "password": "string"
+}
+Responses:
+201 Created: User registered successfully.
+400 Bad Request: Validation or duplication errors.
+2. Profile Management
+2.1 View Profile
+GET /api/profile
+Description: Retrieves the user's profile details.
+Headers: Requires Authorization: Bearer <token>.
+Responses:
+200 OK: Returns user profile data.
+401 Unauthorized: Authentication failure.
+2.2 Edit Profile
+PUT /api/profile
+Description: Updates the user’s profile information.
+Headers: Requires Authorization: Bearer <token>.
+Request Body:
+json
+
+{
+  "name": "string",
+  "email": "string",
+  "profileImage": "string (Cloudinary URL)"
+}
+Responses:
+200 OK: Profile updated successfully.
+400 Bad Request: Validation errors.
+3. Recipe List & Details
+3.1 Get All Recipes
+GET /api/recipes
+Description: Returns a list of all recipes, with optional filters.
+Parameters:
+name (optional, string): Search by recipe name.
+ingredient (optional, string): Search by ingredient.
+country (optional, string): Filter by country of origin.
+rating (optional, integer): Filter by minimum rating.
+Responses:
+200 OK: Returns an array of recipes.
+3.2 Get Recipe by ID
+GET /api/recipes/{id}
+Description: Fetches detailed information about a specific recipe.
+Parameters:
+id (required, string): The ID of the recipe.
+Responses:
+200 OK: Returns recipe details.
+404 Not Found: Recipe not found.
+4. Bookmarking/Favoriting Recipes
+4.1 Add Bookmark
+POST /api/bookmarks
+Description: Adds a recipe to the user's list of bookmarked recipes.
+Headers: Requires Authorization: Bearer <token>.
+Request Body:
+json
+
+{
+  "recipeId": "string"
+}
+Responses:
+201 Created: Recipe bookmarked.
+400 Bad Request: Validation errors.
+4.2 Get Bookmarked Recipes
+GET /api/bookmarks
+Description: Retrieves the user’s bookmarked recipes.
+Headers: Requires Authorization: Bearer <token>.
+Responses:
+200 OK: Returns an array of bookmarked recipes.
+5. Social Sharing
+5.1 Share Recipe
+POST /api/share
+Description: Generates a shareable link for a recipe.
+Request Body:
+json
+
+{
+  "recipeId": "string",
+  "platform": "string (e.g., Facebook, Twitter, WhatsApp)"
+}
+Responses:
+200 OK: Returns a shareable link.
+6. Group Collaboration on Recipes
+6.1 Create Group
+POST /api/groups
+Description: Creates a new group for recipe collaboration.
+Headers: Requires Authorization: Bearer <token>.
+Request Body:
+json
+
+{
+  "groupName": "string",
+  "members": ["string"]  // Array of user IDs
+}
+Responses:
+201 Created: Group created.
+400 Bad Request: Validation errors.
+6.2 Add Recipe to Group
+POST /api/groups/{groupId}/recipes
+Description: Adds a recipe to a group for collaborative work.
+Parameters:
+groupId (required, string): ID of the group.
+Request Body:
+json
+
+{
+  "recipeId": "string"
+}
+Responses:
+201 Created: Recipe added to group.
+7. Comments and Ratings
+7.1 Add Comment
+POST /api/recipes/{id}/comments
+Description: Adds a comment to a recipe.
+Headers: Requires Authorization: Bearer <token>.
+Parameters:
+id (required, string): Recipe ID.
+Request Body:
+json
+
+{
+  "content": "string"
+}
+Responses:
+201 Created: Comment added.
+7.2 Add Rating
+POST /api/recipes/{id}/rating
+Description: Adds a rating to a recipe.
+Headers: Requires Authorization: Bearer <token>.
+Parameters:
+id (required, string): Recipe ID.
+Request Body:
+json
+
+{
+  "rating": "integer (1-5)"
+}
+Responses:
+201 Created: Rating added.
+8. Sign Out
+8.1 Sign Out
+POST /api/auth/signout
+Description: Logs the user out and clears their session.
+Headers: Requires Authorization: Bearer <token>.
+Responses:
+200 OK: User signed out successfully.
