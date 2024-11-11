@@ -45,7 +45,7 @@ function Nav() {
       <div className='navbar-links'>
         <Link to='/'>Home</Link>
         <Link to='/Discover'>Discover</Link>
-        <Link to='Contact'>Contact</Link>
+        <Link to='Contact'>Contact Us</Link>
         <Link to='about'>About Us</Link>
       </div>
 
