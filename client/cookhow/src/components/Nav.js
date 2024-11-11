@@ -39,7 +39,7 @@ function Nav() {
   return (
     <div className='navbar'>
       <div className='navbar-logo'>
-        <img src={log2} alt='logo' className='h-10 w-10 rounded-lg' />
+        <img src={log2} alt='logo'  />
           </div>
 
       <div className='navbar-links'>
