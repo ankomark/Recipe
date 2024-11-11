@@ -1,0 +1,176 @@
+Recipe-Room API Documentation
+1. User Management
+1.1 User Registration
+POST /api/auth/register
+Description: Register a new user account.
+Request Body:
+json
+
+{
+  "username": "mukar",
+  "email": "example@gmail.com",
+  "password": "112233"
+}
+Responses:
+201 Created: User registered successfully.
+400 Bad Request: Validation errors or duplicate email.
+1.2 User Login
+POST /api/auth/login
+Description: Log in an existing user.
+Request Body:
+
+
+{
+  "email": "@email.com",
+  "password": "12345"
+}
+Responses:
+200 OK: Returns a JWT token and user data.
+401 Unauthorized: Invalid credentials.
+400 Bad Request: Validation errors.
+1.3 User Profile
+GET /api/user/profile
+
+Description: Retrieve the profile details of the logged-in user.
+Headers: Requires Authorization: Bearer <token>.
+Responses:
+200 OK: Returns user profile information.
+401 Unauthorized: User is not authenticated.
+PUT /api/user/profile
+
+Description: Update the logged-in user's profile information.
+Headers: Requires Authorization: Bearer <token>.
+Request Body:
+
+{
+  "name": "john",
+  "bio": "skk",
+  "profileImageUrl": "string" // URL of profile image uploaded via Cloudinary
+}
+Responses:
+200 OK: Profile updated successfully.
+400 Bad Request: Validation errors.
+2. Recipe Management
+2.1 Fetch All Recipes
+GET /api/recipes
+Description: Retrieve a list of recipes with optional filters.
+Parameters:
+country (optional, string): Filter by country of origin.
+rating (optional, number): Filter by minimum rating.
+search (optional, string): Search by recipe name or ingredient.
+Responses:
+200 OK: Returns an array of recipes.
+2.2 Fetch Recipe Details
+GET /api/recipes/{id}
+Description: Retrieve details of a specific recipe by its ID.
+Parameters:
+id (required, string): The unique identifier for the recipe.
+Responses:
+200 OK: Returns recipe details including ingredients, steps, images, etc.
+404 Not Found: Recipe not found.
+2.3 Create Recipe
+POST /api/recipes
+Description: Add a new recipe.
+Headers: Requires Authorization: Bearer <token>.
+Request Body:
+
+{
+  "title": "recipes",
+  "ingredients": [""],
+  "steps": ["/date"],
+  "servingSize": "",
+  "imageUrl": "string" // URL of image uploaded via Cloudinary
+}
+Responses:
+201 Created: Recipe created successfully.
+400 Bad Request: Validation errors.
+2.4 Update Recipe
+PUT /api/recipes/{id}
+Description: Update an existing recipe.
+Headers: Requires Authorization: Bearer <token>.
+Parameters:
+id (required, string): The unique identifier for the recipe.
+Request Body:
+
+{
+  "title": "string",
+  "ingredients": ["string"],
+  "steps": ["string"],
+  "servingSize": "number",
+  "imageUrl": "string" // URL of image uploaded via Cloudinary
+}
+Responses:
+200 OK: Recipe updated successfully.
+400 Bad Request: Validation errors.
+404 Not Found: Recipe not found.
+2.5 Delete Recipe
+DELETE /api/recipes/{id}
+Description: Delete a specific recipe by its ID.
+Headers: Requires Authorization: Bearer <token>.
+Parameters:
+id (required, string): The unique identifier for the recipe.
+Responses:
+200 OK: Recipe deleted successfully.
+404 Not Found: Recipe not found.
+3. Recipe Interaction
+3.1 Bookmark Recipe
+POST /api/bookmarks
+Description: Bookmark a recipe for the logged-in user.
+Headers: Requires Authorization: Bearer <token>.
+Request Body:
+
+{
+  "recipeId": "string"
+}
+Responses:
+201 Created: Recipe bookmarked successfully.
+400 Bad Request: Validation errors.
+3.2 Unbookmark Recipe
+DELETE /api/bookmarks/{recipeId}
+Description: Remove a bookmarked recipe for the logged-in user.
+Headers: Requires Authorization: Bearer <token>.
+Parameters:
+recipeId (required, string): The unique identifier for the recipe.
+Responses:
+200 OK: Bookmark removed successfully.
+404 Not Found: Bookmark not found.
+3.3 Comment on Recipe
+POST /api/recipes/{id}/comments
+Description: Add a comment to a recipe.
+Headers: Requires Authorization: Bearer <token>.
+Parameters:
+id (required, string): The unique identifier for the recipe.
+Request Body:
+
+{
+  "content": "---"
+}
+Responses:
+201 Created: Comment added.
+400 Bad Request: Validation errors.
+3.4 Rate Recipe
+POST /api/recipes/{id}/ratings
+Description: Rate a recipe.
+Headers: Requires Authorization: Bearer <token>.
+Parameters:
+id (required, string): The unique identifier for the recipe.
+Request Body:
+
+{
+  "rating": "number (1-5)"
+}
+Responses:
+201 Created: Rating added.
+400 Bad Request: Validation errors.
+4. Social Sharing
+4.1 Share Recipe
+POST /api/share
+Description: Generate a shareable link for a recipe.
+Request Body:
+
+{
+  "recipeId": "string",
+  "platform": "string (e.g., Facebook, Twitter, WhatsApp)"
+}
+Responses:
+200 OK: Returns a shareable link for the specified platform.
