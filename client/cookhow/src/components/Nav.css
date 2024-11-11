@@ -1,0 +1,61 @@
+/* Navbar styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #2d242f; /* Dark background */
+  border-radius: 10px; /* Rounded corners */
+  margin: 0 10px;
+}
+
+.navbar-logo {
+  display: flex;
+  width: auto;
+  height: auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-text {
+  font-family: 'Oregano', sans-serif;
+  font-size: 40px;
+  color: #604461;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #fff; /* White text */
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.signup, .login {
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.signup {
+  background-color: #4c2d4e;
+  color: white;
+  border: none;
+}
+
+.login {
+  background-color: transparent;
+  border: 1px solid #4c2d4e;
+  color: #d090d4;
+}
