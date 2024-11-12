@@ -22,7 +22,14 @@ const Home = () => {
             global kitchen.
           </p>
           <div className="buttons">
-            <button className="join-btn">Join Us Today</button>
+            {/* Link to SignIn page */}
+            {/* <Link to="/signin">
+              <button className="join-btn">Join Us Today</button>
+            </Link> */}
+            
+            <Link to="/signup">
+              <button className="join-btn">Join Us Today</button>
+            </Link>
 
             {/* Link to Discover Page */}
             <Link to="/discover">

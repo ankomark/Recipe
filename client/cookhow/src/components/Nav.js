@@ -50,8 +50,15 @@ function Nav() {
       </div>
 
       <div className='navbar-buttons'>
-        <button className='signup'>Sign-up</button>
-        <button className='login'>Log-in</button>
+        {/* <button className='signup'>Sign-up</button>
+        <button className='login'>Log-in</button> */}
+        <Link to="/signin">
+              <button className="signup">Login</button>
+            </Link>
+            
+            <Link to="/signup">
+              <button className="login">Sign Up</button>
+            </Link>
       </div>
     </div>
   );

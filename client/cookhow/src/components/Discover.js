@@ -3,6 +3,7 @@ import './Discover.css'
 import heroIcon from "../assets/arrow.png";
 import top1 from "../assets/top1.png"
 import searchIcon from "../assets/search1.png"
+import { Link } from "react-router-dom"; 
 
 const Discover = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,10 +18,16 @@ const Discover = () => {
         <div className="hero-content">
           <h1>Top pick this week</h1>
           <h2>How to make egg fried rice</h2>
-          <button className="join-button">
+          {/* <button className="join-button">
             Join Us Today{" "}
            <img src={heroIcon} alt="arrow"/> 
-          </button>
+          </button> */}
+
+          <Link to="/signup">
+              <button className="join-button">Join Us Today{" "}
+              <img src={heroIcon} alt="arrow"/></button>
+            </Link>
+
         </div>
         <div className="hero-image">
           <img
